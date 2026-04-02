@@ -1,0 +1,46 @@
+{
+  "buildCommand": "pnpm run build",
+  "outputDirectory": "static-build",
+  "framework": "expo",
+  "env": {
+    "EXPO_PUBLIC_DOMAIN": "@EXPO_PUBLIC_DOMAIN",
+    "EXPO_PUBLIC_REPL_ID": "@EXPO_PUBLIC_REPL_ID",
+    "BASE_PATH": "@BASE_PATH"
+  },
+  "rewrites": [
+    {
+      "source": "/manifest",
+      "destination": "/api/manifest"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/api/serve"
+    }
+  ],
+  "functions": {
+    "server/serve.js": {
+      "runtime": "nodejs18.x",
+      "maxDuration": 60
+    }
+  },
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ]
+}
