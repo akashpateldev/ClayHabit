@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ClayHabit Mobile App
 
 ClayHabit is a React Native / Expo mobile application designed for organized learning and daily habit building. This app allows users to scan and organize course materials, track their daily progress, and stay committed to their learning goals.
